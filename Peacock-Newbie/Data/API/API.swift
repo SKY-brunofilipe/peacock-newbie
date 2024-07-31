@@ -36,34 +36,12 @@ struct API {
             
             do {
                 // Parse the JSON data
-                let jsonData = String(data: data, encoding: .utf8)
                 let result = try JSONDecoder().decode(SectionResponseDTO.self, from: data)
                 completion(.success(result))
-            } catch let decodingError {
-                // let message = "Decoding error: \(decodingError.detailedDescription)"
-                //print(message)
-                completion(.failure(decodingError))
             } catch {
                 completion(.failure(error))
             }
             
         }.resume()
-    }
-}
-
-extension DecodingError {
-    var detailedDescription: String {
-        switch self {
-        case .typeMismatch(let type, let context):
-            return "Type '\(type)' mismatch: \(context.debugDescription) - \(context.codingPath)"
-        case .valueNotFound(let type, let context):
-            return "Value '\(type)' not found: \(context.debugDescription) - \(context.codingPath)"
-        case .keyNotFound(let key, let context):
-            return "Key '\(key)' not found: \(context.debugDescription) - \(context.codingPath)"
-        case .dataCorrupted(let context):
-            return "Data corrupted: \(context.debugDescription) - \(context.codingPath)"
-        @unknown default:
-            return "Unknown error: \(self)"
-        }
     }
 }
