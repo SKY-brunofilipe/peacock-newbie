@@ -21,8 +21,10 @@ final class RailsListViewController: UIViewController {
     static let titleElementKind = "title-element-kind"
     
     private let viewModel: BrowseViewModel
+    private var currentSnapshot: Snapshot = Snapshot()
+    
+    // Best practise to do this??
     private var dataSource: DataSource!
-    private var currentSnapshot: Snapshot!
     var collectionView: UICollectionView! = nil
     
     
@@ -67,7 +69,7 @@ extension RailsListViewController {
             let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: titleSize,
                 elementKind: RailsListViewController.titleElementKind,
-                alignment: .top
+                alignment: .topLeading
             )
             section.boundarySupplementaryItems = [titleSupplementary]
             
@@ -107,10 +109,8 @@ extension RailsListViewController {
         
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<RailTitleSupplementaryView>(elementKind: RailsListViewController.titleElementKind) {
             (supplementaryView, string, indexPath) in
-            if let snapshot = self.currentSnapshot {
-                let rail =  snapshot.sectionIdentifiers[indexPath.section]
-                supplementaryView.label.text = rail.title
-            }
+            let rail = self.viewModel.items.value[indexPath.section]
+            supplementaryView.label.text = rail.title
         }
         
         dataSource.supplementaryViewProvider = { (view, kind, index) in
@@ -120,12 +120,14 @@ extension RailsListViewController {
     }
     
     private func applySnapshot() {
-        self.viewModel.items.value.forEach {
-            let rail = $0
-            currentSnapshot.appendSections([rail])
-            currentSnapshot.appendItems(rail.items ?? [])
+        if self.viewModel.items.value.count > 0 {
+            self.viewModel.items.value.forEach {
+                let rail = $0
+                currentSnapshot.appendSections([rail])
+                currentSnapshot.appendItems(rail.items ?? [])
+            }
+            dataSource.apply(currentSnapshot, animatingDifferences: true)
         }
-        dataSource.apply(currentSnapshot, animatingDifferences: false)
     }
 }
 

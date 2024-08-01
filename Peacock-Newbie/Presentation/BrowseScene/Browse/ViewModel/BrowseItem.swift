@@ -9,11 +9,15 @@ import Foundation
 
 struct TileItem: Equatable, Hashable {
     let title: String
+    let identifier = UUID()
 }
 
 extension TileItem {
     init(item: Tile) {
         self.title = item.title
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
     }
 }
 
@@ -30,5 +34,9 @@ extension BrowseItem {
         self.type = rail.type
         self.id = rail.id
         self.items = rail.items?.map(TileItem.init)
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
