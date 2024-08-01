@@ -12,7 +12,7 @@ protocol BrowseViewModelInput {
 }
 
 protocol BrowseViewModelOutput {
-    var items: Observable<[BrowseItemViewModel]> { get }
+    var items: Observable<[BrowseItem]> { get }
     var error: Observable<String> { get }
 }
 
@@ -23,7 +23,7 @@ final class BrowseViewModelImpl: BrowseViewModel {
     private let loadBrowserUseCase: LoadBrowseUseCase
     
     // MARK: - OUTPUT
-    let items: Observable<[BrowseItemViewModel]> = Observable([])
+    let items: Observable<[BrowseItem]> = Observable([])
     let error: Observable<String> = Observable("")
     
     init(loadBrowserUseCase: LoadBrowseUseCase) {
@@ -31,7 +31,7 @@ final class BrowseViewModelImpl: BrowseViewModel {
     }
     
     private func loadRails(rails: [CollectionRail]) {
-        items.value = rails.map(BrowseItemViewModel.init)
+        items.value = rails.map(BrowseItem.init)
         print(items.value)
     }
     
