@@ -13,10 +13,10 @@ final class TileCell: UICollectionViewCell {
     let imageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.masksToBounds = true
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 4
-        view.backgroundColor = UIColor.green
+        view.layer.borderColor = UIColor(named: "primary")?.cgColor
         return view
     }()
     let titleLabel = {
@@ -65,5 +65,6 @@ extension TileCell {
             return
         }
         imageView.kf.setImage(with: URL(string: imageUrl))
+        imageView.contentMode = .scaleAspectFill
     }
 }

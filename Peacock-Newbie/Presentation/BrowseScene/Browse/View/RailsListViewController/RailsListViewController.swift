@@ -23,7 +23,6 @@ final class RailsListViewController: UIViewController {
     private let viewModel: BrowseViewModel
     private var currentSnapshot: Snapshot = Snapshot()
     
-    // Best practise to do this??
     private lazy var dataSource: DataSource = makeDataSource()
     private lazy var collectionView: UICollectionView = makeCollectionView()
     
@@ -48,7 +47,9 @@ final class RailsListViewController: UIViewController {
     func makeDataSource() -> DataSource {
         let cellRegistration = UICollectionView.CellRegistration
         <TileCell, TileItem> { (cell, indexPath, item) in
+            let theme: BrowseItemTheme = BrowseItemTheme(imageUrl: item.imageURL)
             cell.titleLabel.text = item.title
+            cell.configure(theme: theme)
         }
         
         return DataSource(collectionView: collectionView) {
@@ -113,18 +114,6 @@ extension RailsListViewController {
     }
     
     func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration
-        <TileCell, TileItem> { (cell, indexPath, item) in
-            let theme: BrowseItemTheme = BrowseItemTheme(imageUrl: item.imageURL)
-            cell.titleLabel.text = item.title
-            cell.configure(theme: theme)
-        }
-        
-        dataSource = DataSource(collectionView: collectionView) {
-            (collectionView: UICollectionView, indexPath: IndexPath, item: TileItem) -> UICollectionViewCell? in
-            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
-        }
-        
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<RailTitleSupplementaryView>(elementKind: RailsListViewController.titleElementKind) {
             (supplementaryView, string, indexPath) in
             let rail = self.viewModel.items.value[indexPath.section]
