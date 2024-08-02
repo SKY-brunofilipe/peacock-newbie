@@ -8,28 +8,34 @@
 import UIKit
 
 class RailTitleSupplementaryView: UICollectionReusableView {
-    let label = UILabel()
+    let labelView = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.textColor = UIColor(named: "white")
+        return label
+    }()
+    
     static let reuseIdentifier = "rail-title-supplementary-reuse-identifier"
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setupConstraints()
     }
     required init?(coder: NSCoder) {
         fatalError("not implemnted")
     }
     
-    private func configure() {
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
+    private func setupConstraints() {
+        addSubview(labelView)
+
         let inset = CGFloat(10)
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            label.topAnchor.constraint(equalTo: topAnchor, constant: inset),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset)
+            labelView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            labelView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            labelView.topAnchor.constraint(equalTo: topAnchor, constant: inset),
+            labelView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset)
         ])
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
     }
 }

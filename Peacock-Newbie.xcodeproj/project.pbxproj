@@ -10,6 +10,9 @@
 		9D853DAD2C5A81F50078FCBA /* TileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DAC2C5A81F50078FCBA /* TileCell.swift */; };
 		9D853DB02C5B96AF0078FCBA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D853DAF2C5B96AF0078FCBA /* Kingfisher */; };
 		9D853DB32C5BC83D0078FCBA /* RailTitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DB22C5BC83D0078FCBA /* RailTitleSupplementaryView.swift */; };
+		9D853DB52C5CEF560078FCBA /* BrowseItemTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DB42C5CEF560078FCBA /* BrowseItemTheme.swift */; };
+		9D853DB82C5D20310078FCBA /* Colors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9D853DB72C5D20310078FCBA /* Colors.plist */; };
+		9D853DBB2C5D20E50078FCBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D853DBA2C5D20E50078FCBA /* Assets.xcassets */; };
 		9DAB59912C57A634009A6064 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB59902C57A634009A6064 /* AppDelegate.swift */; };
 		9DAB59932C57A634009A6064 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB59922C57A634009A6064 /* SceneDelegate.swift */; };
 		9DAB599A2C57A635009A6064 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DAB59992C57A635009A6064 /* Assets.xcassets */; };
@@ -67,6 +70,9 @@
 /* Begin PBXFileReference section */
 		9D853DAC2C5A81F50078FCBA /* TileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileCell.swift; sourceTree = "<group>"; };
 		9D853DB22C5BC83D0078FCBA /* RailTitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailTitleSupplementaryView.swift; sourceTree = "<group>"; };
+		9D853DB42C5CEF560078FCBA /* BrowseItemTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseItemTheme.swift; sourceTree = "<group>"; };
+		9D853DB72C5D20310078FCBA /* Colors.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Colors.plist; sourceTree = "<group>"; };
+		9D853DBA2C5D20E50078FCBA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9DAB598D2C57A634009A6064 /* Peacock-Newbie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peacock-Newbie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAB59902C57A634009A6064 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DAB59922C57A634009A6064 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +141,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D853DB62C5D200B0078FCBA /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				9D853DB72C5D20310078FCBA /* Colors.plist */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		9D853DB92C5D20C20078FCBA /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9D853DBA2C5D20E50078FCBA /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		9DAB59842C57A634009A6064 = {
 			isa = PBXGroup;
 			children = (
@@ -240,6 +262,8 @@
 		9DAB59BC2C57D23D009A6064 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9D853DB92C5D20C20078FCBA /* Assets */,
+				9D853DB62C5D200B0078FCBA /* Theme */,
 				9DAB59BD2C57D268009A6064 /* Icons */,
 			);
 			path = Resources;
@@ -326,6 +350,7 @@
 			children = (
 				9DCBD8512C59480000948F45 /* RailsListViewController */,
 				9DAB5A032C57ECE5009A6064 /* BrowseViewController.swift */,
+				9D853DB42C5CEF560078FCBA /* BrowseItemTheme.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -477,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D853DB82C5D20310078FCBA /* Colors.plist in Resources */,
 				9DAB5A022C57E55D009A6064 /* .swiftlint.yml in Resources */,
 				9DAB59DD2C57D287009A6064 /* ic_bottom_nav_home_unselected.xml in Resources */,
 				9DAB59D72C57D287009A6064 /* ic_bottom_nav_home_selected.xml in Resources */,
@@ -500,6 +526,7 @@
 				9DAB59D52C57D287009A6064 /* x-shape.svg in Resources */,
 				9DAB59E22C57D287009A6064 /* ic_app_logo_small_nbcuott.xml in Resources */,
 				9DAB59DB2C57D287009A6064 /* ic_bottom_nav_channels_selected.xml in Resources */,
+				9D853DBB2C5D20E50078FCBA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +541,7 @@
 				9DAB5A112C57FFE9009A6064 /* SectionGroup.swift in Sources */,
 				9DAB5A252C5917D9009A6064 /* BrowseSceneDIContainer.swift in Sources */,
 				9DAB5A2A2C591BC6009A6064 /* DispatchQueueType.swift in Sources */,
+				9D853DB52C5CEF560078FCBA /* BrowseItemTheme.swift in Sources */,
 				9DAB59B52C57B791009A6064 /* Image.swift in Sources */,
 				9DAB5A152C58FBFE009A6064 /* BrowseViewModel.swift in Sources */,
 				9DAB5A0F2C57FE3E009A6064 /* Section.swift in Sources */,

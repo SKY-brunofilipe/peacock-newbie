@@ -9,12 +9,18 @@ import Foundation
 
 struct TileItem: Equatable, Hashable {
     let title: String
+    let imageURL: String?
     let identifier = UUID()
 }
 
 extension TileItem {
     init(item: Tile) {
         self.title = item.title
+        if let titleArtImage = item.images.first(where: {$0.type == Image.ImageType.titleArt169}) {
+            self.imageURL = titleArtImage.url
+        } else {
+            self.imageURL = nil
+        }
     }
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)

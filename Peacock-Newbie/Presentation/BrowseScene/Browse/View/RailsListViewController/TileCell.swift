@@ -7,16 +7,32 @@
 
 import UIKit
 import Foundation
+import Kingfisher
 
 final class TileCell: UICollectionViewCell {
-    let imageView = UIImageView()
-    let titleLabel = UILabel()
+    let imageView = {
+        let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = 4
+        view.backgroundColor = UIColor.green
+        return view
+    }()
+    let titleLabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.font = UIFont.boldSystemFont(ofSize: 14)
+        view.adjustsFontForContentSizeCategory = true
+        view.textColor = UIColor(named: "white")
+        return view
+    }()
     
     static let reuseIdentifier = "tile-cell-reuse-identifier"
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        setupConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -25,32 +41,29 @@ final class TileCell: UICollectionViewCell {
 }
 
 extension TileCell {
-    private func configure() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+    private func setupConstraints() {
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
-        
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        titleLabel.adjustsFontForContentSizeCategory = true
-        
-        imageView.layer.borderColor = UIColor.black.cgColor
-        imageView.layer.borderWidth = 1
-        imageView.layer.cornerRadius = 4
-        imageView.backgroundColor = UIColor.green
         
         let spacing = CGFloat(10)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: -20),
-            imageView.widthAnchor.constraint(equalToConstant: 10),
+            
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: spacing),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 10)
         ])
+    }
+}
+
+extension TileCell {
+    func configure(theme: BrowseItemTheme) {
+        guard let imageUrl = theme.imageUrl else {
+            return
+        }
+        imageView.kf.setImage(with: URL(string: imageUrl))
     }
 }

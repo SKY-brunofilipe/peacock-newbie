@@ -24,8 +24,8 @@ final class RailsListViewController: UIViewController {
     private var currentSnapshot: Snapshot = Snapshot()
     
     // Best practise to do this??
-    private var dataSource: DataSource!
-    var collectionView: UICollectionView! = nil
+    private lazy var dataSource: DataSource = makeDataSource()
+    private lazy var collectionView: UICollectionView = makeCollectionView()
     
     
     
@@ -43,6 +43,22 @@ final class RailsListViewController: UIViewController {
         super.viewDidLoad()
         configureHierarchy()
         configureDataSource()
+    }
+    
+    func makeDataSource() -> DataSource {
+        let cellRegistration = UICollectionView.CellRegistration
+        <TileCell, TileItem> { (cell, indexPath, item) in
+            cell.titleLabel.text = item.title
+        }
+        
+        return DataSource(collectionView: collectionView) {
+            (collectionView: UICollectionView, indexPath: IndexPath, item: TileItem) -> UICollectionViewCell? in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: item)
+        }
+    }
+    
+    func makeCollectionView() -> UICollectionView {
+        return UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     }
 }
 
@@ -86,7 +102,7 @@ extension RailsListViewController {
     func configureHierarchy() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = UIColor(named: "primary-dark")
         view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -99,7 +115,9 @@ extension RailsListViewController {
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration
         <TileCell, TileItem> { (cell, indexPath, item) in
+            let theme: BrowseItemTheme = BrowseItemTheme(imageUrl: item.imageURL)
             cell.titleLabel.text = item.title
+            cell.configure(theme: theme)
         }
         
         dataSource = DataSource(collectionView: collectionView) {
@@ -110,7 +128,7 @@ extension RailsListViewController {
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration<RailTitleSupplementaryView>(elementKind: RailsListViewController.titleElementKind) {
             (supplementaryView, string, indexPath) in
             let rail = self.viewModel.items.value[indexPath.section]
-            supplementaryView.label.text = rail.title
+            supplementaryView.labelView.text = rail.title
         }
         
         dataSource.supplementaryViewProvider = { (view, kind, index) in
@@ -121,11 +139,12 @@ extension RailsListViewController {
     
     private func applySnapshot() {
         if self.viewModel.items.value.count > 0 {
-            self.viewModel.items.value.forEach {
-                let rail = $0
-                currentSnapshot.appendSections([rail])
-                currentSnapshot.appendItems(rail.items ?? [])
-            }
+            self.viewModel.items.value
+                .forEach {
+                    let rail = $0
+                    currentSnapshot.appendSections([rail])
+                    currentSnapshot.appendItems(rail.items ?? [])
+                }
             dataSource.apply(currentSnapshot, animatingDifferences: true)
         }
     }
