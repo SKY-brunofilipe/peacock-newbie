@@ -32,7 +32,7 @@ extension SectionResponseDTO {
         let type: RailTypeDTO
         let title: String
         let renderHint: RenderHintDTO
-        let items: [TileDTO]?
+        let items: [AssetDTO]?
     }
     
     struct RenderHintDTO: Decodable {
@@ -52,7 +52,7 @@ extension SectionResponseDTO {
         let groupTemplate: String?
     }
     
-    struct TileDTO: Decodable {
+    struct AssetDTO: Decodable {
         let id: String
         let type: String
         let title: String
@@ -156,8 +156,8 @@ extension SectionResponseDTO.RenderHintDTO.TemplateDTO {
     }
 }
 
-extension SectionResponseDTO.TileDTO {
-    func toDomain() -> Tile {
+extension SectionResponseDTO.AssetDTO {
+    func toDomain() -> Asset {
         .init(
             type: type,
             id: id,

@@ -18,5 +18,5 @@ struct CollectionRail {
     let type: RailType
     let title: String
     let renderHint: RenderHint
-    let items: [Tile]?
+    let items: [Asset]?
 }

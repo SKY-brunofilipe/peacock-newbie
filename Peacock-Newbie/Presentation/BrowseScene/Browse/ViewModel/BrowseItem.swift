@@ -14,7 +14,7 @@ struct TileItem: Equatable, Hashable {
 }
 
 extension TileItem {
-    init(item: Tile) {
+    init(item: Asset) {
         self.title = item.title
         if let titleArtImage = item.images.first(where: {$0.type == Image.ImageType.titleArt169}) {
             self.imageURL = titleArtImage.url

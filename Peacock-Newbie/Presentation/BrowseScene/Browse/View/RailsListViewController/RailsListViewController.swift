@@ -26,8 +26,6 @@ final class RailsListViewController: UIViewController {
     private lazy var dataSource: DataSource = makeDataSource()
     private lazy var collectionView: UICollectionView = makeCollectionView()
     
-    
-    
     init(viewModel: BrowseViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

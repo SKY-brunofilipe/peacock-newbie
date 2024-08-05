@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Tile {
+struct Asset {
     var type: String
     var id: String
     var title: String
