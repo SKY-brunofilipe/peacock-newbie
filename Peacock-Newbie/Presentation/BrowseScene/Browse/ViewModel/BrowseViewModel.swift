@@ -7,8 +7,13 @@
 
 import Foundation
 
+struct BrowseViewModelActions {
+    let showPDP: (Asset) -> Void
+}
+
 protocol BrowseViewModelInput {
     func viewDidLoad()
+    func didSelectAsset(at sectionIndex: Int, at railIndex: Int)
 }
 
 protocol BrowseViewModelOutput {
@@ -21,18 +26,22 @@ typealias BrowseViewModel = BrowseViewModelInput & BrowseViewModelOutput
 
 final class BrowseViewModelImpl: BrowseViewModel {
     private let loadBrowserUseCase: LoadBrowseUseCase
+    private let actions: BrowseViewModelActions
+    
+    private var rails: [CollectionRail] = []
     
     // MARK: - OUTPUT
     let items: Observable<[BrowseItem]> = Observable([])
     let error: Observable<String> = Observable("")
     
-    init(loadBrowserUseCase: LoadBrowseUseCase) {
+    init(loadBrowserUseCase: LoadBrowseUseCase, actions: BrowseViewModelActions) {
         self.loadBrowserUseCase = loadBrowserUseCase
+        self.actions = actions
     }
     
     private func loadRails(rails: [CollectionRail]) {
         items.value = rails.map(BrowseItem.init)
-        print(items.value)
+        self.rails = rails
     }
     
     private func handle(error: Error) {
@@ -54,6 +63,13 @@ final class BrowseViewModelImpl: BrowseViewModel {
 extension BrowseViewModelImpl {
     func viewDidLoad() { 
         load()
+    }
+    
+    func didSelectAsset(at sectionIndex: Int, at railIndex: Int) {
+        guard let asset = rails[sectionIndex].items?[railIndex] else {
+            return
+        }
+        actions.showPDP(asset)
     }
 }
 

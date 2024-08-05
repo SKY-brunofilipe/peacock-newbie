@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 protocol BrowseFlowCoordinatorDependencies  {
-    func makeBrowseViewController() -> BrowseViewController
+    func makeBrowseViewController(actions: BrowseViewModelActions) -> BrowseViewController
+    func makePDPViewController(asset: Asset) -> PDPViewController
 }
 
 final class BrowseFlowCoordinator {
@@ -24,8 +25,14 @@ final class BrowseFlowCoordinator {
     }
     
     func start() {
-        let viewController = dependencies.makeBrowseViewController()
+        let actions = BrowseViewModelActions(showPDP: showPDP)
+        let viewController = dependencies.makeBrowseViewController(actions: actions)
         navigationController?.pushViewController(viewController, animated: false)
         browseVC = viewController
+    }
+    
+    private func showPDP(asset: Asset) {
+        let viewController = dependencies.makePDPViewController(asset: asset)
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

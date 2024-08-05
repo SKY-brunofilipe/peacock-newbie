@@ -13,7 +13,7 @@ struct RailSection: Hashable {
     let items: [TileItem]
 }
 
-final class RailsListViewController: UIViewController {
+final class RailsListViewController: UIViewController, UICollectionViewDelegate {
     typealias DataSource = UICollectionViewDiffableDataSource<BrowseItem, TileItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<BrowseItem, TileItem>
     
@@ -40,6 +40,7 @@ final class RailsListViewController: UIViewController {
         super.viewDidLoad()
         configureHierarchy()
         configureDataSource()
+        collectionView.delegate = self
     }
     
     func makeDataSource() -> DataSource {
@@ -72,7 +73,7 @@ extension RailsListViewController {
             let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ?
                 0.425 : 0.85)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth),
-                                                  heightDimension: .absolute(250))
+                                                  heightDimension: .absolute(200))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
@@ -102,7 +103,7 @@ extension RailsListViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor(named: "primary-dark")
-        view.addSubview(collectionView)
+        self.view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -133,6 +134,12 @@ extension RailsListViewController {
                     currentSnapshot.appendItems(rail.items ?? [])
                 }
             dataSource.apply(currentSnapshot, animatingDifferences: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let selectedItem = dataSource.itemIdentifier(for: indexPath) {
+            viewModel.didSelectAsset(at: indexPath.section, at: indexPath.row)
         }
     }
 }

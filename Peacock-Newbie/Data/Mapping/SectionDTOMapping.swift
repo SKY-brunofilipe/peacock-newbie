@@ -57,6 +57,7 @@ extension SectionResponseDTO {
         let type: String
         let title: String
         let images: [ImageDTO]
+        let synopsisLong: String?
     }
     
     struct ImageDTO: Decodable {
@@ -162,7 +163,8 @@ extension SectionResponseDTO.AssetDTO {
             type: type,
             id: id,
             title: title,
-            images: images.map { $0.toDomain() }
+            images: images.map { $0.toDomain() },
+            synopsisLong: synopsisLong
         )
     }
 }

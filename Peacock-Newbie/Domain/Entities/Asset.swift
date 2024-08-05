@@ -12,4 +12,5 @@ struct Asset {
     var id: String
     var title: String
     var images: [Image]
+    var synopsisLong: String?
 }

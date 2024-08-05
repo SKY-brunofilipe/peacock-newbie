@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D0D22F32C60F3A100410447 /* PDPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F22C60F3A100410447 /* PDPViewModel.swift */; };
+		9D0D22F52C60F3B400410447 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F42C60F3B400410447 /* PDPViewController.swift */; };
+		9D0D22F72C612C9300410447 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F62C612C9300410447 /* DetailsView.swift */; };
+		9D0D22F92C613D0F00410447 /* AssetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F82C613D0F00410447 /* AssetDetails.swift */; };
 		9D853DAD2C5A81F50078FCBA /* TileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DAC2C5A81F50078FCBA /* TileCell.swift */; };
 		9D853DB02C5B96AF0078FCBA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D853DAF2C5B96AF0078FCBA /* Kingfisher */; };
 		9D853DB32C5BC83D0078FCBA /* RailTitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DB22C5BC83D0078FCBA /* RailTitleSupplementaryView.swift */; };
@@ -69,6 +73,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D0D22F22C60F3A100410447 /* PDPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDPViewModel.swift; sourceTree = "<group>"; };
+		9D0D22F42C60F3B400410447 /* PDPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
+		9D0D22F62C612C9300410447 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		9D0D22F82C613D0F00410447 /* AssetDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetails.swift; sourceTree = "<group>"; };
 		9D853DAC2C5A81F50078FCBA /* TileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileCell.swift; sourceTree = "<group>"; };
 		9D853DB22C5BC83D0078FCBA /* RailTitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailTitleSupplementaryView.swift; sourceTree = "<group>"; };
 		9D853DB42C5CEF560078FCBA /* BrowseItemTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseItemTheme.swift; sourceTree = "<group>"; };
@@ -143,6 +151,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D0D22EF2C60F37900410447 /* PDP */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D22F12C60F38D00410447 /* View */,
+				9D0D22F02C60F38300410447 /* ViewModel */,
+			);
+			path = PDP;
+			sourceTree = "<group>";
+		};
+		9D0D22F02C60F38300410447 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D22F22C60F3A100410447 /* PDPViewModel.swift */,
+				9D0D22F82C613D0F00410447 /* AssetDetails.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9D0D22F12C60F38D00410447 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9D0D22F42C60F3B400410447 /* PDPViewController.swift */,
+				9D0D22F62C612C9300410447 /* DetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		9D853DB62C5D200B0078FCBA /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +345,7 @@
 		9DAB59E62C57D4EA009A6064 /* BrowseScene */ = {
 			isa = PBXGroup;
 			children = (
+				9D0D22EF2C60F37900410447 /* PDP */,
 				9DAB5A342C591DDE009A6064 /* Coordinator */,
 				9DAB5A332C591DBD009A6064 /* Browse */,
 			);
@@ -557,6 +593,7 @@
 				9DAB59B52C57B791009A6064 /* Image.swift in Sources */,
 				9DAB5A152C58FBFE009A6064 /* BrowseViewModel.swift in Sources */,
 				9DAB5A0F2C57FE3E009A6064 /* Section.swift in Sources */,
+				9D0D22F52C60F3B400410447 /* PDPViewController.swift in Sources */,
 				9DAB5A172C590F81009A6064 /* BrowseItem.swift in Sources */,
 				9DAB59BB2C57BA2C009A6064 /* BrowseRepository.swift in Sources */,
 				9DAB59912C57A634009A6064 /* AppDelegate.swift in Sources */,
@@ -576,11 +613,14 @@
 				9DAB5A282C591B97009A6064 /* Cancellable.swift in Sources */,
 				9DAB59EE2C57D572009A6064 /* BrowseRepositoryImpl.swift in Sources */,
 				9D853DAD2C5A81F50078FCBA /* TileCell.swift in Sources */,
+				9D0D22F72C612C9300410447 /* DetailsView.swift in Sources */,
 				9DAB59B12C57B53C009A6064 /* RenderHint.swift in Sources */,
+				9D0D22F32C60F3A100410447 /* PDPViewModel.swift in Sources */,
 				9DAB5A092C57F646009A6064 /* API.swift in Sources */,
 				9DAB5A0D2C57FE26009A6064 /* SectionResponse.swift in Sources */,
 				9DCBD8532C59484C00948F45 /* RailsListViewController.swift in Sources */,
 				9DAB59AD2C57B2C5009A6064 /* CollectionRail.swift in Sources */,
+				9D0D22F92C613D0F00410447 /* AssetDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

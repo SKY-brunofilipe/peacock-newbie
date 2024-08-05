@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 final class BrowseSceneDIContainer: BrowseFlowCoordinatorDependencies {
-    
     // MARK: - Use Cases
     func makeLoadBrowseUseCase() -> LoadBrowseUseCase {
         LoadBrowseUseCaseImpl(
@@ -22,18 +21,29 @@ final class BrowseSceneDIContainer: BrowseFlowCoordinatorDependencies {
         BrowseRepositoryImpl()
     }
     
-    // MARK: - Views
-    func makeBrowseViewController() -> BrowseViewController {
+    // MARK: - VIew Controllers
+    func makeBrowseViewController(actions: BrowseViewModelActions) -> BrowseViewController {
         BrowseViewController(
-            viewModel: makeBrowseViewModel()
+            viewModel: makeBrowseViewModel(actions: actions)
+        )
+    }
+
+    func makePDPViewController(asset: Asset) -> PDPViewController {
+        return PDPViewController(
+            viewModel: makePDPViewModel(asset: asset)
         )
     }
     
     // MARK: - View Models
-    func makeBrowseViewModel() -> BrowseViewModel {
+    func makeBrowseViewModel(actions: BrowseViewModelActions) -> BrowseViewModel {
         BrowseViewModelImpl(
-            loadBrowserUseCase: makeLoadBrowseUseCase()
+            loadBrowserUseCase: makeLoadBrowseUseCase(),
+            actions: actions
         )
+    }
+    
+    func makePDPViewModel(asset: Asset) -> PDPViewModel {
+        PDPViewModelImpl(asset: asset)
     }
     
     // MARK: - Flow Coordinators
