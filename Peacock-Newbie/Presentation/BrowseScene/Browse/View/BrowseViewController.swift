@@ -34,7 +34,8 @@ final class BrowseViewController: UIViewController {
     }
     
     private func setupViewLayout() {
-        add(child: railsListViewController, container: view)
+        addChild(railsListViewController)
+        view.addSubview(railsListViewController.view)
     }
     
     private func updateItems() {

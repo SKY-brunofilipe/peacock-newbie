@@ -17,7 +17,6 @@ final class RailsListViewController: UIViewController, UICollectionViewDelegate 
     typealias DataSource = UICollectionViewDiffableDataSource<BrowseItem, TileItem>
     typealias Snapshot = NSDiffableDataSourceSnapshot<BrowseItem, TileItem>
     
-    static let headerElementKind = "header-element-kind"
     static let titleElementKind = "title-element-kind"
     
     private let viewModel: BrowseViewModel
@@ -80,11 +79,11 @@ extension RailsListViewController {
             section.interGroupSpacing = 20
             section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
             
-            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(1.0))
+            let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             let titleSupplementary = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: titleSize,
                 elementKind: RailsListViewController.titleElementKind,
-                alignment: .topLeading
+                alignment: .top
             )
             section.boundarySupplementaryItems = [titleSupplementary]
             
