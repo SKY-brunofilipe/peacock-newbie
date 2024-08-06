@@ -46,8 +46,7 @@ final class RailsListViewController: UIViewController, UICollectionViewDelegate 
     func makeDataSource() -> DataSource {
         let cellRegistration = UICollectionView.CellRegistration
         <TileCell, TileItem> { (cell, indexPath, item) in
-            let theme: BrowseItemTheme = BrowseItemTheme(imageUrl: item.imageURL)
-            cell.titleLabel.text = item.title
+            let theme: BrowseItemTheme = BrowseItemTheme(imageUrl: item.imageURL, title: item.title)
             cell.configure(theme: theme)
         }
         
@@ -103,7 +102,9 @@ extension RailsListViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor(named: "primary-dark")
-        self.view.addSubview(collectionView)
+        collectionView.delegate = self
+        
+        view.addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

@@ -39,6 +39,10 @@ final class TileCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("not implemnted")
     }
+    
+    override func prepareForReuse() {
+        imageView.image = nil
+    }
 }
 
 extension TileCell {
@@ -62,7 +66,11 @@ extension TileCell {
 
 extension TileCell {
     func configure(theme: BrowseItemTheme) {
+        titleLabel.text = theme.title
+        
         guard let imageUrl = theme.imageUrl else {
+            imageView.kf.setImage(with: URL(string: "https://archive.org/download/placeholder-image/placeholder-image.jpg"))
+            imageView.contentMode = .scaleAspectFill
             return
         }
         imageView.kf.setImage(with: URL(string: imageUrl))

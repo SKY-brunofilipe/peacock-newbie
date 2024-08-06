@@ -27,6 +27,14 @@ final class PDPViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let imgBackArrow = UIImage(named: "back-arrow")
+        let appearance = UINavigationBarAppearance()
+        appearance.setBackIndicatorImage(imgBackArrow, transitionMaskImage: imgBackArrow)
+        let navVC = UINavigationController()
+        navVC.navigationBar.standardAppearance = appearance
+        navVC.navigationBar.scrollEdgeAppearance = appearance
+        
         view.backgroundColor = UIColor(named: "primary-dark")
         view.addSubview(detailsView)
         detailsView.translatesAutoresizingMaskIntoConstraints = false

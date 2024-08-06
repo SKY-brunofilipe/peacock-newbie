@@ -11,6 +11,7 @@
 		9D0D22F52C60F3B400410447 /* PDPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F42C60F3B400410447 /* PDPViewController.swift */; };
 		9D0D22F72C612C9300410447 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F62C612C9300410447 /* DetailsView.swift */; };
 		9D0D22F92C613D0F00410447 /* AssetDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D0D22F82C613D0F00410447 /* AssetDetails.swift */; };
+		9D0D22FB2C6255AA00410447 /* placeholder-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9D0D22FA2C6255AA00410447 /* placeholder-image.jpg */; };
 		9D853DAD2C5A81F50078FCBA /* TileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DAC2C5A81F50078FCBA /* TileCell.swift */; };
 		9D853DB02C5B96AF0078FCBA /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 9D853DAF2C5B96AF0078FCBA /* Kingfisher */; };
 		9D853DB32C5BC83D0078FCBA /* RailTitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D853DB22C5BC83D0078FCBA /* RailTitleSupplementaryView.swift */; };
@@ -61,7 +62,6 @@
 		9DAB5A152C58FBFE009A6064 /* BrowseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A142C58FBFE009A6064 /* BrowseViewModel.swift */; };
 		9DAB5A172C590F81009A6064 /* BrowseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A162C590F81009A6064 /* BrowseItem.swift */; };
 		9DAB5A1E2C5916C5009A6064 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A1D2C5916C5009A6064 /* AppFlowCoordinator.swift */; };
-		9DAB5A202C591754009A6064 /* AppAppearence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A1F2C591754009A6064 /* AppAppearence.swift */; };
 		9DAB5A232C5917BE009A6064 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A222C5917BE009A6064 /* AppDIContainer.swift */; };
 		9DAB5A252C5917D9009A6064 /* BrowseSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A242C5917D9009A6064 /* BrowseSceneDIContainer.swift */; };
 		9DAB5A282C591B97009A6064 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5A272C591B97009A6064 /* Cancellable.swift */; };
@@ -77,6 +77,7 @@
 		9D0D22F42C60F3B400410447 /* PDPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDPViewController.swift; sourceTree = "<group>"; };
 		9D0D22F62C612C9300410447 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		9D0D22F82C613D0F00410447 /* AssetDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetDetails.swift; sourceTree = "<group>"; };
+		9D0D22FA2C6255AA00410447 /* placeholder-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "placeholder-image.jpg"; path = "../../../../../Desktop/placeholder-image.jpg"; sourceTree = "<group>"; };
 		9D853DAC2C5A81F50078FCBA /* TileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileCell.swift; sourceTree = "<group>"; };
 		9D853DB22C5BC83D0078FCBA /* RailTitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailTitleSupplementaryView.swift; sourceTree = "<group>"; };
 		9D853DB42C5CEF560078FCBA /* BrowseItemTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseItemTheme.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		9DAB5A142C58FBFE009A6064 /* BrowseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewModel.swift; sourceTree = "<group>"; };
 		9DAB5A162C590F81009A6064 /* BrowseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseItem.swift; sourceTree = "<group>"; };
 		9DAB5A1D2C5916C5009A6064 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
-		9DAB5A1F2C591754009A6064 /* AppAppearence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearence.swift; sourceTree = "<group>"; };
 		9DAB5A222C5917BE009A6064 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		9DAB5A242C5917D9009A6064 /* BrowseSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseSceneDIContainer.swift; sourceTree = "<group>"; };
 		9DAB5A272C591B97009A6064 /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
@@ -318,6 +318,7 @@
 		9DAB59BD2C57D268009A6064 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				9D0D22FA2C6255AA00410447 /* placeholder-image.jpg */,
 				9DAB59C22C57D287009A6064 /* app_launcher_background.xml */,
 				9DAB59C82C57D287009A6064 /* back-10-seconds.svg */,
 				9DAB59CD2C57D287009A6064 /* back-arrow.svg */,
@@ -415,7 +416,6 @@
 			isa = PBXGroup;
 			children = (
 				9DAB5A212C5917A6009A6064 /* DIContainer */,
-				9DAB5A1F2C591754009A6064 /* AppAppearence.swift */,
 				9DAB59902C57A634009A6064 /* AppDelegate.swift */,
 				9DAB5A1D2C5916C5009A6064 /* AppFlowCoordinator.swift */,
 				9DAB59922C57A634009A6064 /* SceneDelegate.swift */,
@@ -566,6 +566,7 @@
 				9DAB59DA2C57D287009A6064 /* search.svg in Resources */,
 				9DAB59DC2C57D287009A6064 /* back-10-seconds.svg in Resources */,
 				9DAB59E32C57D287009A6064 /* ic_app_launcher.xml in Resources */,
+				9D0D22FB2C6255AA00410447 /* placeholder-image.jpg in Resources */,
 				9DAB59D42C57D287009A6064 /* ic_bottom_nav_channels_unselected.xml in Resources */,
 				9DAB59D22C57D287009A6064 /* Home.svg in Resources */,
 				9DAB59D82C57D287009A6064 /* ic_bottom_nav_search.xml in Resources */,
@@ -603,7 +604,6 @@
 				9DAB59F62C57E101009A6064 /* MoviesViewController.swift in Sources */,
 				9DAB5A042C57ECE5009A6064 /* BrowseViewController.swift in Sources */,
 				9DAB5A402C593700009A6064 /* Observable.swift in Sources */,
-				9DAB5A202C591754009A6064 /* AppAppearence.swift in Sources */,
 				9DAB5A1E2C5916C5009A6064 /* AppFlowCoordinator.swift in Sources */,
 				9DAB59932C57A634009A6064 /* SceneDelegate.swift in Sources */,
 				9D853DB32C5BC83D0078FCBA /* RailTitleSupplementaryView.swift in Sources */,
