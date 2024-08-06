@@ -28,12 +28,14 @@ final class PDPViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let imgBackArrow = UIImage(named: "back-arrow")
-        let appearance = UINavigationBarAppearance()
-        appearance.setBackIndicatorImage(imgBackArrow, transitionMaskImage: imgBackArrow)
-        let navVC = UINavigationController()
-        navVC.navigationBar.standardAppearance = appearance
-        navVC.navigationBar.scrollEdgeAppearance = appearance
+        let backButton = UIButton(type: .custom)
+        backButton.setImage(UIImage(named: "back-arrow"), for: .normal) // Replace "your_custom_icon" with your image name
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        navigationItem.hidesBackButton = true
+        backButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        let backBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.leftBarButtonItem = backBarButtonItem
         
         view.backgroundColor = UIColor(named: "primary-dark")
         view.addSubview(detailsView)
@@ -46,6 +48,10 @@ final class PDPViewController: UIViewController {
             detailsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             detailsView.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -spacing)
         ])
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
 
 }
