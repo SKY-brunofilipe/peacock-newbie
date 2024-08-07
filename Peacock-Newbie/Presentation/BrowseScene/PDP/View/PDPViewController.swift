@@ -55,4 +55,26 @@ final class PDPViewController: UIViewController {
     }
 
 }
+
+#Preview {
+    let asset = Asset(
+        type: "ASSET/PROGRAMME",
+        id: "id",
+        title: "Book Club: The Next Chapter",
+        images: [
+            Image(
+                type: Image.ImageType.landscape,
+                url: "https://imageservice.disco.peacocktv.com/uuid/43c0674d-2d60-3b29-b994-2ec02bbe8238/LAND_16_9?language=eng&territory=US&proposition=NBCUOTT&version=f5fd6f1f-d430-3b1b-9142-f03f43c03b05"
+            ),
+            Image(
+                type: Image.ImageType.titleLogo,
+                url:  "https://imageservice.disco.peacocktv.com/uuid/43c0674d-2d60-3b29-b994-2ec02bbe8238/TITLE_TREATMENT?language=eng&territory=US&proposition=NBCUOTT&version=f968ae54-722a-3414-bae7-7a13a74c19bf"
+            )
+        ],
+        synopsisLong: "Four women take their book club to Italy for the fun girls' trip they never had. When things go off the rails and secrets are revealed, their relaxing vacation turns into a once-in-a-lifetime, cross-country adventure."
+    )
+    let viewModel = PDPViewModelImpl(asset: asset)
+    let viewController = PDPViewController(viewModel: viewModel)
+    return viewController
+}
     
