@@ -17,6 +17,7 @@ final class DetailsView: UIView {
         view.axis = .vertical
         view.alignment = .leading
         view.spacing = 10
+        view.backgroundColor = UIColor(named: "primary-dark")
         return view
     }()
     
@@ -40,6 +41,21 @@ final class DetailsView: UIView {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
+        return view
+    }()
+    
+    let emptyView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    
+    let titleArtStackView = {
+        let view = UIStackView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.distribution = .fillEqually
+        view.alignment = .center
         return view
     }()
     
@@ -72,7 +88,11 @@ final class DetailsView: UIView {
         descriptionView.text = viewModel.assetDetails.synopsisLong ?? ""
         
         stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(titleArtView)
+        
+        titleArtStackView.addArrangedSubview(titleArtView)
+        titleArtStackView.addArrangedSubview(emptyView)
+        stackView.addArrangedSubview(titleArtStackView)
+        
         if viewModel.assetDetails.titleArtImage == "" {
             stackView.addArrangedSubview(titleView)
         }
@@ -86,9 +106,11 @@ final class DetailsView: UIView {
                 stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
                 stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
                 
-                imageView.heightAnchor.constraint(equalToConstant: 200),
-                titleArtView.heightAnchor.constraint(equalToConstant: 100),
-                titleArtView.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.5)
+                titleArtStackView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 16),
+                titleArtStackView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: -16),
+                titleArtStackView.heightAnchor.constraint(equalToConstant: 100),
+                
+                imageView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: 1/3)
        ])
     }
 }
